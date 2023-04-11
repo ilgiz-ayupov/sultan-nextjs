@@ -1,0 +1,12 @@
+@import "@/styles/_variables.scss";
+
+.text {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: $blue;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+}

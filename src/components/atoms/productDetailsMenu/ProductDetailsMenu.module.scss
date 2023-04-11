@@ -1,0 +1,23 @@
+@import "@/styles/_variables.scss";
+
+.menu {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.card {
+  font-size: 1.17rem;
+
+  &__key {
+    font-weight: 300;
+    color: $blue;
+    margin-right: 0.2em;
+  }
+
+  &__value {
+    font-weight: 500;
+  }
+}

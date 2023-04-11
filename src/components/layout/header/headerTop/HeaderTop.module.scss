@@ -1,0 +1,68 @@
+@import "@/styles/_variables.scss";
+
+.headerTop {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba($blue, 0.2);
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__divider {
+    margin: 0 1rem;
+  }
+}
+
+.addresses {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__divider {
+    height: 2.8rem;
+  }
+
+  &__box {
+    margin-left: 1rem;
+  }
+
+  &__address {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  &__desc {
+    font-weight: 300;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: $blue;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__divider {
+    height: 1.5rem;
+  }
+
+  &__link {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $blue;
+
+    transition: color 300ms ease;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

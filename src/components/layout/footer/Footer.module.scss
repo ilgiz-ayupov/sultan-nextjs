@@ -1,0 +1,120 @@
+@import "@/styles/_variables.scss";
+
+.footer {
+  background: $blue;
+  color: $white;
+
+  padding: 1.25rem 0;
+  margin-top: 4.2rem;
+
+  @media (min-width: 768px) {
+    padding: 3rem 0 5rem;
+    margin-top: 7.2rem;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.3rem;
+
+    @media (min-width: 768px) {
+      gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__callCenterCard {
+    color: $white;
+    text-align: left;
+  }
+}
+
+.firstCol {
+  grid-column: 1 / 3;
+  margin-bottom: 1.66rem;
+
+  @media (min-width: 768px) {
+    grid-column: initial;
+    margin-bottom: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.25rem;
+  }
+
+  &__logo {
+    color: $white;
+  }
+
+  &__catalogBtn {
+    padding: 1em 2.5em;
+  }
+
+  &__desc {
+    margin-bottom: 1.25rem;
+
+    br {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.col {
+  &__title {
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin-bottom: 1em;
+
+    @media (min-width: 768px) {
+      font-size: 1.43rem;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 1.7rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 1.43rem;
+      }
+    }
+  }
+
+  &__link {
+    transition: color 200ms ease;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &__email {
+    strong {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+  }
+}

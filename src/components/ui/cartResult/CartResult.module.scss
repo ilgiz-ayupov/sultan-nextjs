@@ -1,0 +1,22 @@
+.cartResult {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  margin-top: 2.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__totalAmount {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.83em;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+}

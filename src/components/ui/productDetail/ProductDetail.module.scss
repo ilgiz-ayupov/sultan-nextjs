@@ -1,0 +1,57 @@
+@import "@/styles/_variables.scss";
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__imgBox {
+    text-align: center;
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__detail {
+    margin-top: 1.25rem;
+  }
+
+  &__stateStore {
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: $green;
+  }
+
+  &__title {
+    margin-top: 0.84rem;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 1.25rem;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 1.67rem;
+  }
+
+  &__cartBtn {
+    svg {
+      width: 1.9rem;
+      height: 1.9rem;
+    }
+  }
+
+  &__detailsMenu {
+    margin-top: 1.67rem;
+  }
+}

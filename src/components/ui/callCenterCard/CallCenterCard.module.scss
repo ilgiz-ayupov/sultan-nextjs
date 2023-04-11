@@ -1,0 +1,22 @@
+@import "@/styles/_variables.scss";
+
+.card {
+  color: $blue;
+  line-height: 1.5;
+  text-align: right;
+
+  &__phone {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &__worktime {
+    font-weight: 300;
+    font-size: 0.85rem;
+  }
+
+  &__call {
+    font-size: 0.7rem;
+    text-decoration-line: underline;
+  }
+}

@@ -1,0 +1,24 @@
+@import "@/styles/_variables.scss";
+
+.title {
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  :global(.accent) {
+    font-weight: 800;
+    color: $accent-color;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.85rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.2em;
+    }
+  }
+}

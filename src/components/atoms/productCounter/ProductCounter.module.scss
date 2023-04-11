@@ -1,0 +1,39 @@
+@import "@/styles/_variables.scss";
+
+.counter {
+  display: flex;
+  align-items: center;
+  color: $blue;
+
+  &__btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2rem;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 198, 80, 0.3) 0%,
+      rgba(254, 202, 110, 0.3) 97.25%
+    );
+    border: none;
+    border-radius: 3rem;
+
+    font-weight: 300;
+    font-size: 1rem;
+
+    transition: transform 200ms ease;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__output {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.16rem;
+    margin: 0 1em;
+  }
+}

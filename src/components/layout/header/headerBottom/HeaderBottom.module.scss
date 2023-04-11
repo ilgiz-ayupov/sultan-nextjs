@@ -1,0 +1,40 @@
+@import "@/styles/_variables.scss";
+
+.headerBottom {
+  border-bottom: 1px solid rgba($blue, 0.2);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: center;
+  }
+
+  &__divider {
+    height: calc(100% - 0.8rem);
+  }
+
+  &__btn {
+    border: none;
+    color: $blue;
+    background: $white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+
+    transition: background 200ms ease 0s, color 200ms ease 0s;
+
+    span {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 0.5em;
+    }
+
+    &:hover {
+      color: $white;
+      background: $blue;
+    }
+  }
+}

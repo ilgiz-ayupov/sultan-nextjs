@@ -1,0 +1,68 @@
+@import "@/styles/_variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 2.5rem 1.25rem;
+  box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06);
+  border-radius: 0.84rem;
+
+  &__header {
+    margin-bottom: 0.84rem;
+  }
+
+  &__body {
+    margin-bottom: 1rem;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.84rem;
+    padding: 0.6em 1em;
+    letter-spacing: 0.045em;
+
+    text-align: center;
+    color: $white;
+    text-transform: uppercase;
+  }
+
+  &__imgBox {
+    text-align: center;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__volume {
+    margin-bottom: 0.84rem;
+  }
+
+  &__title {
+    margin-bottom: 1.67rem;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 1.16rem;
+  }
+
+  &__cartBtn {
+    color: $white;
+    padding: 0.84rem 2rem;
+
+    svg {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+  }
+}

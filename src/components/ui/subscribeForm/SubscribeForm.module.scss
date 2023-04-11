@@ -1,0 +1,50 @@
+@import "@/styles/_variables.scss";
+
+.form {
+  &__title {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0.8em;
+  }
+
+  &__control {
+    position: relative;
+  }
+
+  &__input {
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 1rem 1.43rem;
+    background: $white;
+    border: 2px solid transparent;
+    border-radius: 2rem;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    transition: border 200ms ease 0s, background 200ms ease 0s;
+
+    &:focus {
+      border: 2px solid $accent-color;
+    }
+
+    &::placeholder {
+      color: rgba($gray, 0.6);
+    }
+  }
+
+  &__submitBtn {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+
+    &:active {
+      transform: translateY(-50%) scale(0.9);
+    }
+  }
+}

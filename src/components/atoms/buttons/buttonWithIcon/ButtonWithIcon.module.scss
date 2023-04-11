@@ -1,0 +1,10 @@
+.btnWithIcon {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    display: inline-block;
+    font-size: inherit;
+    margin-right: 0.5rem;
+  }
+}

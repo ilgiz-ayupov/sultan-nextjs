@@ -1,0 +1,54 @@
+@import "@/styles/_variables.scss";
+
+.cartBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  transition: transform 200ms ease;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &__iconBox {
+    position: relative;
+    color: $blue;
+
+    svg {
+      width: 3.4rem;
+      height: 2rem;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    border: 3px solid $white;
+    font-size: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.5;
+    margin-left: 1.2rem;
+
+    span {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: $blue;
+    }
+
+    strong {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
