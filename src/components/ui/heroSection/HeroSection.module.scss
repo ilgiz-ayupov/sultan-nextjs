@@ -1,0 +1,149 @@
+@import "@/styles/_variables.scss";
+
+.heroSection {
+  margin-top: 0;
+}
+
+.hero {
+  position: relative;
+  height: 20rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 425px) {
+    height: 30rem;
+  }
+
+  @media (min-width: 768px) {
+    min-height: 37rem;
+    height: 100vh;
+    justify-content: flex-start;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    color: $white;
+
+    padding: 1.67rem 2.1rem;
+    border-radius: 0.5rem;
+
+    background: linear-gradient(
+      89.86deg,
+      #8a94ab 0.13%,
+      rgba(138, 148, 171, 0) 99.89%
+    );
+    backdrop-filter: blur(4.5px);
+    text-align: center;
+
+    @media (min-width: 768px) {
+      border-radius: 0;
+      backdrop-filter: initial;
+      background: none;
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 1.5rem;
+
+    br {
+      display: none;
+    }
+
+    @media (min-width: 425px) {
+      font-size: 2.2rem;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 5rem;
+
+      br {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__desc {
+    font-weight: 500;
+    font-size: 0.83rem;
+    text-transform: uppercase;
+
+    margin-top: 1em;
+
+    @media (min-width: 425px) {
+      font-size: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      font-weight: 800;
+      font-size: 2.14rem;
+    }
+  }
+
+  &__catalogBtn {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    padding: 1.5em 3em;
+    text-transform: uppercase;
+    margin-top: 3em;
+  }
+}
+
+.benefits {
+  margin-top: 1rem;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 0.83rem;
+    }
+  }
+
+  &__marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 2rem;
+    height: 2rem;
+    background: $accent-color;
+    border-radius: 50%;
+    font-family: "Inter";
+
+    font-weight: 700;
+    font-size: 0.83rem;
+    color: $white;
+  }
+
+  &__text {
+    font-size: 1rem;
+    color: $blue;
+    line-height: 1.3;
+
+    margin-left: 0.5em;
+
+    strong {
+      font-weight: 700;
+    }
+
+    :global(.price) {
+      white-space: nowrap;
+    }
+  }
+}

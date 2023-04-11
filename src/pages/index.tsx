@@ -12,7 +12,7 @@ import {
   SectionTitle,
   SectionDesc,
 } from "@/components/atoms";
-import { CategoriesMenu, ProductsMenu } from "@/components/ui";
+import { HeroSection, CategoriesMenu, ProductsMenu } from "@/components/ui";
 import { BaseLayout } from "@/components/layout";
 
 type Props = {
@@ -40,7 +40,9 @@ const Home: React.FC<Props> = ({ categories, products }) => {
       </Head>
 
       <main>
-        <Section id="products" data-testid="products">
+        <HeroSection id="hero" />
+
+        <Section id="products">
           <div className="container">
             <SectionHeader>
               <SectionTitle>
