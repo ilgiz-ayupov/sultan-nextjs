@@ -35,7 +35,7 @@ const cartSlice = createSlice({
         state.cartProducts.splice(foundCartProductIndex, 1, {
           ...foundCartProduct,
           qty: foundCartProduct.qty + qty,
-          totalAmount: calcTotalAmount,
+          totalAmount: foundCartProduct.totalAmount + calcTotalAmount,
         });
       } else {
         state.cartProducts.push({
