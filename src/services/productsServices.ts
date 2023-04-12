@@ -1,10 +1,15 @@
 import { ProductType } from "@/types";
 
 export const getProducts = async (limit?: number) => {
+  const url = new URL(`${process.env.API_HOST}/products`);
+  if (limit) {
+    url.searchParams.set("limit", String(limit));
+  }
+
   try {
-    const response = await fetch(`${process.env.API_HOST}/products`);
+    const response = await fetch(url);
     const products: ProductType[] = await response.json();
-    return limit ? products.slice(0, limit) : products;
+    return products;
   } catch {
     return [];
   }
@@ -20,11 +25,17 @@ export const getProduct = async (id: number) => {
   }
 };
 
-export const getProductsByCategory = async (categoryId: number) => {
+export const getProductsByCategory = async (
+  categoryId: number,
+  limit?: number
+) => {
+  const url = new URL(`${process.env.API_HOST}/products/${categoryId}`);
+  if (limit) {
+    url.searchParams.set("limit", String(limit));
+  }
+
   try {
-    const response = await fetch(
-      `${process.env.API_HOST}/products/${categoryId}`
-    );
+    const response = await fetch(url);
     const products: ProductType[] = await response.json();
     return products;
   } catch {
