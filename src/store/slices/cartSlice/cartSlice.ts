@@ -87,13 +87,16 @@ const cartSlice = createSlice({
             totalAmount: calcTotalAmount,
             qty,
           });
+
+          state.totalAmount +=
+            (qty - foundCartProduct.qty) * foundCartProduct.price;
+          state.totalQty += qty - foundCartProduct.qty;
         } else {
           state.cartProducts.splice(foundCartProductIndex, 1);
-        }
 
-        state.totalAmount +=
-          (qty - foundCartProduct.qty) * foundCartProduct.price;
-        state.totalQty += qty - foundCartProduct.qty;
+          state.totalAmount -= foundCartProduct.totalAmount;
+          state.totalQty -= foundCartProduct.qty;
+        }
       }
 
       return state;
