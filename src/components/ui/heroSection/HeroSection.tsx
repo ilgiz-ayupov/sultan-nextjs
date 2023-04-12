@@ -53,7 +53,7 @@ const HeroSection: React.FC<Props> = ({ id, className }) => {
                 className={styles.hero__catalogBtn}
                 variant="primary"
                 tag="link"
-                href="/link"
+                href="/catalog"
               >
                 В каталог
               </Button>

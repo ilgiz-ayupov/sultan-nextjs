@@ -24,8 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const ProductDetailPage: React.FC<Props> = ({ product }) => {
-  console.log(product);
-
   if (!product.id) {
     return <h1>Продукт не найден !</h1>;
   }

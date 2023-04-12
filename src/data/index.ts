@@ -1,3 +1,4 @@
 import { PRODUCTS } from "./products";
+import { CATEGORIES } from "./categories";
 
-export { PRODUCTS };
+export { PRODUCTS, CATEGORIES };
