@@ -7,13 +7,13 @@ import cartReducer, {
 import { ProductType, CartProductType } from "@/types";
 
 describe("Cart Reducer", () => {
-  const initialState = {
+  const INITIAL_STATE = {
     totalAmount: 0,
     totalQty: 0,
     cartProducts: [] as CartProductType[],
   };
 
-  const product: ProductType = {
+  const PRODUCT: ProductType = {
     id: 1,
     categoryId: 1,
     name: "Ср-во для мытья посуды Апельсин+мята",
@@ -29,155 +29,179 @@ describe("Cart Reducer", () => {
     },
   };
 
-  const cartProduct: CartProductType = {
-    ...product,
+  const CART_PRODUCT: CartProductType = {
+    ...PRODUCT,
     qty: 10,
-    totalAmount: product.price * 10,
+    totalAmount: PRODUCT.price * 10,
   };
 
   it("should handle initial state", () => {
-    expect(cartReducer(undefined, { type: "" })).toEqual(initialState);
+    expect(cartReducer(undefined, { type: "" })).toEqual(INITIAL_STATE);
   });
 
   it("should handle adding a product to the cart", () => {
-    const qty = 10;
-    const totalAmount = product.price * qty;
-    const cartProduct: CartProductType = { ...product, qty, totalAmount };
+    const qty = CART_PRODUCT.qty;
 
-    const newState = cartReducer(initialState, addToCart({ product, qty }));
+    const actualState = cartReducer(
+      INITIAL_STATE,
+      addToCart({ product: PRODUCT, qty })
+    );
+    const expectedState = {
+      totalQty: qty,
+      totalAmount: PRODUCT.price * qty,
+      cartProducts: [CART_PRODUCT],
+    };
 
-    expect(newState.cartProducts).toHaveLength(1);
-    expect(newState.cartProducts[0]).toEqual(cartProduct);
-    expect(newState.totalQty).toEqual(qty);
-    expect(newState.totalAmount).toEqual(totalAmount);
+    expect(actualState.cartProducts).toHaveLength(
+      expectedState.cartProducts.length
+    );
+    expect(actualState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
+    expect(actualState.totalQty).toEqual(expectedState.totalQty);
+    expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
   });
 
   it("should handle adding existing product to the cart", () => {
     const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
     };
 
     const addQty = 3;
 
-    const newState = cartReducer(state, addToCart({ product, qty: addQty }));
-
-    expect(newState.cartProducts).toHaveLength(1);
-    expect(newState.cartProducts[0]).toEqual({
-      ...cartProduct,
-      qty: cartProduct.qty + addQty,
-      totalAmount: cartProduct.totalAmount + cartProduct.price * addQty,
-    });
-    expect(newState.totalQty).toEqual(cartProduct.qty + addQty);
-
-    expect(newState.totalAmount).toEqual(
-      cartProduct.totalAmount + cartProduct.price * addQty
-    );
-  });
-
-  it("should handle remove product from the cart", () => {
-    const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
-    };
-
-    const newState = cartReducer(
+    const actualState = cartReducer(
       state,
-      removeFromCart({ productId: product.id })
-    );
-
-    expect(newState.cartProducts).toHaveLength(0);
-    expect(newState.totalQty).toEqual(0);
-    expect(newState.totalAmount).toEqual(0);
-  });
-
-  it("should handle remove non-existent product from the cart", () => {
-    const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
-    };
-
-    const newState = cartReducer(state, removeFromCart({ productId: 99999 }));
-    const expectedState = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
-    };
-
-    expect(newState.cartProducts).toHaveLength(1);
-    expect(newState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
-    expect(newState.totalQty).toEqual(expectedState.totalQty);
-    expect(newState.totalAmount).toEqual(expectedState.totalAmount);
-  });
-
-  it("should handle update quantity product in the cart", () => {
-    const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
-    };
-
-    const changeQty = 5;
-    const newState = cartReducer(
-      state,
-      changeCartProductQty({ productId: product.id, qty: changeQty })
+      addToCart({ product: PRODUCT, qty: addQty })
     );
     const expectedState = {
-      totalQty: changeQty,
-      totalAmount: cartProduct.price * changeQty,
+      totalQty: CART_PRODUCT.qty + addQty,
+      totalAmount: CART_PRODUCT.totalAmount + addQty * CART_PRODUCT.price,
       cartProducts: [
         {
-          ...cartProduct,
-          qty: changeQty,
-          totalAmount: cartProduct.price * changeQty,
+          ...CART_PRODUCT,
+          qty: CART_PRODUCT.qty + addQty,
+          totalAmount: CART_PRODUCT.totalAmount + addQty * CART_PRODUCT.price,
         },
       ],
     };
 
-    expect(newState.cartProducts).toHaveLength(1);
-    expect(newState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
-    expect(newState.totalQty).toEqual(expectedState.totalQty);
-    expect(newState.totalAmount).toEqual(expectedState.totalAmount);
+    expect(actualState.cartProducts).toHaveLength(
+      expectedState.cartProducts.length
+    );
+    expect(actualState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
+    expect(actualState.totalQty).toEqual(expectedState.totalQty);
+    expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
+  });
+
+  it("should handle remove product from the cart", () => {
+    const state = {
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
+    };
+
+    const actualState = cartReducer(
+      state,
+      removeFromCart({ productId: PRODUCT.id })
+    );
+
+    expect(actualState.cartProducts).toHaveLength(0);
+    expect(actualState.totalQty).toEqual(0);
+    expect(actualState.totalAmount).toEqual(0);
+  });
+
+  it("should handle remove non-existent product from the cart", () => {
+    const state = {
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
+    };
+
+    const actualState = cartReducer(
+      state,
+      removeFromCart({ productId: 99999 })
+    );
+    const expectedState = {
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
+    };
+
+    expect(actualState.cartProducts).toHaveLength(1);
+    expect(actualState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
+    expect(actualState.totalQty).toEqual(expectedState.totalQty);
+    expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
+  });
+
+  it("should handle update quantity product in the cart", () => {
+    const state = {
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
+    };
+
+    const changeQty = 5;
+    const actualState = cartReducer(
+      state,
+      changeCartProductQty({ productId: PRODUCT.id, qty: changeQty })
+    );
+    const expectedState = {
+      totalQty: changeQty,
+      totalAmount: CART_PRODUCT.price * changeQty,
+      cartProducts: [
+        {
+          ...CART_PRODUCT,
+          qty: changeQty,
+          totalAmount: CART_PRODUCT.price * changeQty,
+        },
+      ],
+    };
+
+    expect(actualState.cartProducts).toHaveLength(
+      expectedState.cartProducts.length
+    );
+    expect(actualState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
+    expect(actualState.totalQty).toEqual(expectedState.totalQty);
+    expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
   });
 
   it("should handle update quantity non-existent product in the cart", () => {
     const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
     };
 
     const changeQty = 5;
-    const newState = cartReducer(
+    const actualState = cartReducer(
       state,
       changeCartProductQty({ productId: 99999, qty: changeQty })
     );
     const expectedState = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
     };
 
-    expect(newState.cartProducts).toHaveLength(1);
-    expect(newState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
-    expect(newState.totalQty).toEqual(expectedState.totalQty);
-    expect(newState.totalAmount).toEqual(expectedState.totalAmount);
+    expect(actualState.cartProducts).toHaveLength(
+      expectedState.cartProducts.length
+    );
+    expect(actualState.cartProducts[0]).toEqual(expectedState.cartProducts[0]);
+    expect(actualState.totalQty).toEqual(expectedState.totalQty);
+    expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
   });
 
   it("should handle remove product if product quantity < 0", () => {
     const state = {
-      totalQty: cartProduct.qty,
-      totalAmount: cartProduct.totalAmount,
-      cartProducts: [cartProduct],
+      totalQty: CART_PRODUCT.qty,
+      totalAmount: CART_PRODUCT.totalAmount,
+      cartProducts: [CART_PRODUCT],
     };
 
     const changeQty = -1;
     const actualState = cartReducer(
       state,
-      changeCartProductQty({ productId: product.id, qty: changeQty })
+      changeCartProductQty({ productId: PRODUCT.id, qty: changeQty })
     );
     const expectedState = {
       totalQty: 0,
@@ -185,7 +209,9 @@ describe("Cart Reducer", () => {
       cartProducts: [],
     };
 
-    expect(actualState.cartProducts).toHaveLength(expectedState.cartProducts.length);
+    expect(actualState.cartProducts).toHaveLength(
+      expectedState.cartProducts.length
+    );
     expect(actualState.totalQty).toEqual(expectedState.totalQty);
     expect(actualState.totalAmount).toEqual(expectedState.totalAmount);
   });
